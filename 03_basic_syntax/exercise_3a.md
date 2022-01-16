@@ -1,6 +1,6 @@
 # Exercise 3a: Control Structures
 
-## Goals: 
+## Goals:
 
 - Practice setting up a basic Go file
 - Declaring variables
