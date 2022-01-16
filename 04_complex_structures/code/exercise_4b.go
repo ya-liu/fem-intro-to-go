@@ -6,16 +6,14 @@ import (
 )
 
 func main() {
-	fmt.Println(average(1, 2, 3))
+	fmt.Println(average(1, 2, 3, 5, 77777))
 }
 
 func average(args ...float64) float64 {
 	// fmt.Println(reflect.TypeOf(len(args)))
 	total := 0.0
-	if len(args) == 3 {
-		for _, num := range args {
-			total += num
-		}
+	for _, num := range args {
+		total += num
 	}
-	return total / 3
+	return total / float64(len(args))
 }
