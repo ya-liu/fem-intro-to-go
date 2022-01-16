@@ -62,7 +62,7 @@ To add multiple elements, you could start by doing something like this:
 ```
 
 Or, to avoid setting each index individually, we can use a _composite literal)_
-which containes the type declaration, and a set of initial values:
+which contains the type declaration, and a set of initial values:
 
 ```go
 scores := [5]float64{9, 1.5, 4.5, 7, 8}

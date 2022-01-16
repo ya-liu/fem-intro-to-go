@@ -65,6 +65,7 @@ package main
 // 		2: "user2@gmail.com",
 // 	}
 
+//	// go provides a second argument as a boolean to indicate whether this value is there in the first place
 // 	email1, ok := userEmails[1]
 // 	fmt.Println("Email:", email1, "Present?", ok)
 
