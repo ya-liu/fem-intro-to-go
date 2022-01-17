@@ -3,12 +3,12 @@ package main
 import "fmt"
 
 // Part 1
-func average(numbers ...float64) float64 {
+func average(scores [5]float64) float64 {
 	total := 0.0
-	for _, number := range numbers {
+	for _, number := range scores {
 		total += number
 	}
-	return total / float64(len(numbers))
+	return total / float64(len(scores))
 }
 
 // Part 2
@@ -31,7 +31,8 @@ func addGroceries(item ...string) {
 }
 
 func main() {
-	fmt.Println(average(3, 45, 666))
+	scores := [5]float64{3, 45, 666, 8, 99}
+	fmt.Println(average(scores))
 	fmt.Println(found("Sprinkles"))
 	addGroceries("oranges", "milk", "sausages")
 }
