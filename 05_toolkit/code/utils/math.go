@@ -8,7 +8,7 @@ func printNum(num int) {
 
 // Add function adds multiple numbers
 func Add(numbers ...int) int {
-	total := 1
+	total := 0
 	for _, v := range numbers {
 		printNum(v)
 		total += v
