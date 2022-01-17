@@ -12,11 +12,14 @@ func average(scores [5]float64) float64 {
 }
 
 // Part 2
+var initialPets map[string]string = map[string]string{
+	"Sprinkles": "cat",
+	"Chichi":    "dog",
+	"Fido":      "dog",
+}
+
 func found(name string) bool {
-	pets := make(map[string]string)
-	pets["Sprinkles"] = "cat"
-	pets["Chichi"] = "dog"
-	name, ok := pets[name]
+	_, ok := initialPets[name]
 	return ok
 }
 
@@ -33,6 +36,8 @@ func addGroceries(item ...string) {
 func main() {
 	scores := [5]float64{3, 45, 666, 8, 99}
 	fmt.Println(average(scores))
-	fmt.Println(found("Sprinkles"))
+
+	pet := "nancy"
+	fmt.Println(found(pet))
 	addGroceries("oranges", "milk", "sausages")
 }
