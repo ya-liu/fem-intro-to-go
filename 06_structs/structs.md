@@ -93,6 +93,10 @@ Next, create a function that describes the team of users:
 
 ```go
 func describeGroup(g Group) string {
+  if len(g.users) >= 2 {
+    g.spaceAvailable = false
+  }
+
 	desc := fmt.Sprintf("The %s user group has %d users. Newest user:  %s, Accepting New Users:  %t", g.role, len(g.users), g.newestUser.FirstName, g.spaceAvailable)
 	return desc
 }
@@ -112,6 +116,7 @@ func main() {
 
   fmt.Println(userDescription)
   fmt.Println(groupDescription)
+  fmt.Println(g)
 }
 ```
 
