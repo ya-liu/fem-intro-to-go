@@ -1,13 +1,10 @@
 package utils
 
 import (
-	"fmt"
 	"strings"
 )
 
+// MakeExcited transforms a sentence to all caps with an exclamation point
 func MakeExcited(str string) string {
-	var strUpper = strings.ToUpper(str)
-	var output = strUpper + "!"
-	fmt.Println(output)
-	return output
+	return strings.ToUpper(str) + "!"
 }
