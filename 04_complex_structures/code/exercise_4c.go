@@ -26,11 +26,15 @@ func found(name string) bool {
 // Part 3
 var groceries = []string{"yogurt", "apples", "carrots", "hummus", "pita"}
 
-func addGroceries(item ...string) {
-	newGroceries := append(groceries, item...)
-	fmt.Println(newGroceries)
-	fmt.Println(len(newGroceries))
-	fmt.Println(cap(newGroceries))
+func addGroceries(newGroceries ...string) []string {
+	foods := groceries
+	// foods := append(groceries, newGroceries...)
+	for _, g := range newGroceries {
+		foods = append(foods, g)
+	}
+	fmt.Println(len(foods))
+	fmt.Println(cap(foods))
+	return foods
 }
 
 func main() {
@@ -39,5 +43,7 @@ func main() {
 
 	pet := "nancy"
 	fmt.Println(found(pet))
-	addGroceries("oranges", "milk", "sausages")
+
+	groceryList := addGroceries("beets", "chocolate", "wine")
+	fmt.Println(groceryList)
 }
