@@ -20,7 +20,18 @@ func found(name string) bool {
 	return ok
 }
 
+// Part 3
+var groceries = []string{"yogurt", "apples", "carrots", "hummus", "pita"}
+
+func addGroceries(item ...string) {
+	newGroceries := append(groceries, item...)
+	fmt.Println(newGroceries)
+	fmt.Println(len(newGroceries))
+	fmt.Println(cap(newGroceries))
+}
+
 func main() {
 	fmt.Println(average(3, 45, 666))
 	fmt.Println(found("Sprinkles"))
+	addGroceries("oranges", "milk", "sausages")
 }
