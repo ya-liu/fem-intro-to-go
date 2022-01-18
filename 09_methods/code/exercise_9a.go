@@ -16,7 +16,7 @@ type Group struct {
 	spaceAvailable bool
 }
 
-func (u *User) describe() string {
+func (u User) describe() string {
 	desc := fmt.Sprintf("Name: %s %s, Email: %s", u.FirstName, u.LastName, u.Email)
 	return desc
 }
@@ -24,6 +24,7 @@ func (u *User) describe() string {
 // func describeGroup
 // => "This user group has 19 users. The newest user is Joe Smith. Accepting New Users: true"
 
+// If you are planning to modify the data in a permanent way, use a pointer value to gain access to the memory address
 func (g *Group) describe() string {
 
 	if len(g.users) > 2 {
