@@ -32,6 +32,20 @@ type AllPeople struct {
 // create a route for /people
 // write a function that uses fmt.Fprint that indicates the request was successful
 
+func (p *Person) getHomeworld() {
+	res, err := http.Get(p.HomeworldURL)
+	if err != nil {
+		log.Print("Error fetching homeworld", err)
+	}
+
+	var bytes []byte
+	if bytes, err = ioutil.ReadAll(res.Body); err != nil {
+		log.Print("Error reading response body", err)
+	}
+
+	json.Unmarshal(bytes, &p.Homeworld)
+}
+
 func getPeople(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprint(w, "You've reached the people endpoint!")
 	res, err := http.Get(BaseURL + "people")
@@ -67,6 +81,10 @@ func getPeople(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(people)
 
+	for _, person := range people.People {
+		person.getHomeworld()
+		fmt.Println(person)
+	}
 }
 
 func main() {
