@@ -12,19 +12,21 @@ import (
 const BaseURL = "https://swapi.dev/api/"
 
 type Planet struct {
-	Name       string
-	Terrain    string
-	Population string
+	Name       string `json:"name"`
+	Terrain    string `json:"terrain"`
+	Population string `json:"population"`
 }
 
 type Person struct {
-	Name         string
-	HomeworldURL string
+	Name         string `json:"name"`
+	HomeworldURL string `json:"homeworld"`
 	Homeworld    Planet
 }
 
 type AllPeople struct {
-	People []Person
+	// this key called People doesn't exist on the json object
+	// use a json flag to bridge the data name in json and what we call the data in go syntax
+	People []Person `json:"results"`
 }
 
 // create a route for /people
@@ -39,7 +41,7 @@ func getPeople(w http.ResponseWriter, r *http.Request) {
 		log.Print("Failed to get Star Wars people")
 	}
 
-	fmt.Println(res)
+	// fmt.Println(res)
 
 	// ioutil is used to parse the http response for json data
 	// the bytes variable was originally named data
@@ -51,12 +53,20 @@ func getPeople(w http.ResponseWriter, r *http.Request) {
 		log.Print("Failed to parse http response")
 	}
 
-	fmt.Println(bytes)
+	// fmt.Println(bytes)
+	// fmt.Println(string(bytes))
+	// after printing the stringifed bytes, the actual data is stored in results
 
 	var people AllPeople
 
 	// works like json.parse to turn the bytes data into a variable of choice, the 2nd argument
-	json.Unmarshal(bytes, &people)
+
+	if err := json.Unmarshal(bytes, &people); err != nil {
+		fmt.Println("Error parsing json", err)
+	}
+
+	fmt.Println(people)
+
 }
 
 func main() {
