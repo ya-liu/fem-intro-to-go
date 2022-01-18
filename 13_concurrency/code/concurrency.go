@@ -12,7 +12,10 @@ func say(s string) {
 	}
 }
 
+// goroutine allows the code to be non-blocking
+// but if every single function is set to a goroutine, nothing is going to execute before the goroutine finishes execution
+
 func main() {
-	say("Hello")
+	go say("Hello")
 	say("There")
 }
